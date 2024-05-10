@@ -1,7 +1,12 @@
 import express from 'express';
-import {register, login} from './controllers/auth.js';
+import { register, login } from '../controllers/auth.js';
+
 
 const router = express.Router();
+
+router.get('/', (req, res) => {
+        res.send('This is the profile page');
+      });
 
 router.post('/register', register)
 

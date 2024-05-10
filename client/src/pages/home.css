@@ -1,0 +1,30 @@
+.home-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 50px;
+      }
+      
+      .action-btn {
+        cursor: pointer;
+        padding: 8px 16px;
+        margin: 4px;
+        background-color: #007bff;
+        color: #fff;
+        border-radius: 4px;
+      }
+      
+      .counter {
+        font-size: 24px;
+        margin: 16px 0;
+      }
+      
+      .country {
+        font-style: italic;
+      }
+      
+      .loading {
+        font-style: italic;
+        color: #888;
+      }
+      
