@@ -5,8 +5,10 @@ import { register, login } from '../controllers/auth.js';
 const router = express.Router();
 
 router.get('/', (req, res) => {
-        res.send('This is the profile page');
-      });
+  setTimeout(() => {
+    res.send('This is the profile page');
+  }, 200); // 2ms'lik bir gecikme
+});
 
 router.post('/register', register)
 

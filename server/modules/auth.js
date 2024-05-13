@@ -25,5 +25,7 @@ const AuthSchema = new mongoose.Schema({
         }
 })
 
+const AuthModel = mongoose.model('Auth', AuthSchema);
 
-export default AuthSchema;
+// AuthModel'ı doğrudan dışa aktar
+export default AuthModel

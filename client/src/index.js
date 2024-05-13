@@ -6,6 +6,8 @@ import Home from './pages/Home'
 import Auth from './pages/Auth'
 import { Provider } from 'react-redux';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import 'react-toastify/dist/ReactToastify.min.css';
+import { ToastContainer } from 'react-toastify';
 
 // As of React 18
 const root = ReactDOM.createRoot(document.getElementById('root'))
@@ -17,5 +19,6 @@ root.render(
         <Route path = "/auth" element= {<Auth />} />
       </Routes>
     </BrowserRouter>
+    <ToastContainer />
   </Provider>,
 )
