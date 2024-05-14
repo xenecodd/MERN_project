@@ -26,3 +26,9 @@ export const loginAction = (formData) => async (dispatch) => {
         });
     }
 };
+
+
+export const logoutAction = (formData) => async (dispatch) => {
+        dispatch({ type: 'logout'});
+        window.location = '/auth';
+};

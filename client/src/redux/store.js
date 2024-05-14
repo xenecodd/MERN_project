@@ -1,5 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { authReducer } from './reducers/auth.js'
+import { modalReducer } from './reducers/modal';
 // Automatically adds the thunk middleware and the Redux DevTools extension
 
 
@@ -8,6 +9,7 @@ import { authReducer } from './reducers/auth.js'
 export default configureStore({
   // Automatically calls `combineReducers`
   reducer:{
-    auth : authReducer
+    auth : authReducer,
+    modal: modalReducer
   }
   })

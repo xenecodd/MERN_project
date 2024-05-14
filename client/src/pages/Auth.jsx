@@ -24,6 +24,7 @@ const Auth = () => {
   useEffect(()=>{
     setIsLogin(login);
     console.log(login)
+  // eslint-disable-next-line
   }, [])
 
 
@@ -31,7 +32,7 @@ const Auth = () => {
     e.preventDefault();
     // Giriş yaparken kullanıcı adı gerekli değil
     if (!isLogin && (formData.username === '' || formData.username === null)) {
-      alert('Lütfen tüm alanları doldurun');
+      alert('Lütfen tüm alanlari doldurun');
       return;
     }
     if(isLogin){
@@ -43,8 +44,8 @@ const Auth = () => {
   };
 
   return (
-    <div className="container">
-      <h2>{isLogin? 'Giriş Yap' : 'Kayıt Ol'}</h2>
+    <div className="container max-w-sm mx-auto p-5 rounded-lg shadow ">
+      <h2 className='title mb-5' >{isLogin? 'Giriş Yap' : 'Kayıt Ol'}</h2>
       <form onSubmit={handleSubmit}>
         {!isLogin && (
           <div className="form-group">
@@ -60,11 +61,11 @@ const Auth = () => {
           <input type="password" id="password" name="password" placeholder='Password' value={formData.password} onChange={handleInputChange} required />
         </div>
 
-        <button type="submit">{isLogin ? 'Giriş Yap' : 'Kayıt Ol'}</button>
+        <button className='bg-blue-200' type="submit">{isLogin ? 'Giriş Yap' : 'Kayıt Ol'}</button>
       </form>
 
-      <p>
-        {isLogin ? (<span onClick={() => setIsLogin(!isLogin)}>Hesabınız yok mu? </span>) : (<span onClick={() => setIsLogin(!isLogin)}>Zaten hesabınız var mı?</span>)}
+      <p className='choice cursor-pointer'>
+        {isLogin ? (<span className='m' onClick={() => setIsLogin(!isLogin)}>Hesabınız yok mu? </span>) : (<span onClick={() => setIsLogin(!isLogin)}>Zaten hesabınız var mı?</span>)}
       </p>
 
     </div>
