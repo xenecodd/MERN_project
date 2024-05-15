@@ -5,7 +5,7 @@ const Home = () => {
 
   return (
     <h1 className='text-red-500 text-xl text-center '>
-      Hello world!
+      Ana Sayfa
     </h1> 
   );
 }
