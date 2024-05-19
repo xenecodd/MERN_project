@@ -37,11 +37,6 @@
         float: right;
         block-size: 38px;
       }
-      
-      button:hover {
-        background-color: #7bb47e;
-        block-size: 38px;
-      }
       .title { 
         border-radius: 4px;
         font-size: 24px;
