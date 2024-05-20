@@ -20,7 +20,7 @@ function App() {
     <div>
       <BrowserRouter>
         {token?.token && <Navbar />}
-        { modal && <Modal />}
+        { modal.modal && <Modal />}
         <Routes>
           <Route path="/" element={!token?.token ? <Link to="/auth" /> : <Home />} />
           <Route path="/auth" element={<Auth />} />

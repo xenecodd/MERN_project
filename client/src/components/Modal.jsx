@@ -14,16 +14,19 @@ const Modal = () => {
                 dispatch({ type: 'modal', payload: {modal:false, updateId:null} })
         }
         const {modal} = useSelector((state)=>(state.modal))
+        
         const createPostFunc = () => {
-                if (modal?.updateId) {
+                if (modal.updateId) {
+                        console.log(modal.updateId)
                         dispatch(updatePostAction(modal.updateId, postData))
+                        
                 } else {
                         dispatch(createPostAction(postData)) 
                 }
                 closeFunc()
                 setTimeout(() => {
                   dispatch(getAllPostAction());
-                }, 1);
+                }, 200);
         }
 
 

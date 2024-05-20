@@ -74,9 +74,9 @@ export const updatePost = async (req, res) => {
             const { user, title, description } = req.body;
             
             // Güncellenecek postu bul ve güncelle
-            const updatedPost = await ModalModel.findByIdAndUpdate(id, { user, title, description }, { new: true });
+            const posts = await ModalModel.findByIdAndUpdate(id, { user, title, description }, { new: true });
     
-            if (!updatedPost) {
+            if (!posts) {
                 return res.status(404).json({ msg: "Post not found" });
             }
     

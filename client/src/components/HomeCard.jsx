@@ -11,25 +11,28 @@ const HomeCard = ({ post }) => {
   
   const updatePostFunc = ()=> {
     dispatch({type:'modal', payload: {modal:true, updateId:post._id}})
+    setTimeout(() => {
+      dispatch(getAllPostAction());
+    }, 200);
   }
 
   const deletePostFunc = (id) => {
     dispatch(deletePostAction(id));
     setTimeout(() => {
       dispatch(getAllPostAction());
-    }, 1);
+    }, 200);
   };
 
   return (
     <div className='relative border p-3 rounded-md shadow-sm mt-7 m-2 mb-0'>
       <div className='text-gray-700 text-base mb-1 font-bold'> 
-        {post.title ? post.title : post.posts.title}
+        {post.title}
       </div>
       <div className='text-gray-700 text-base mb-5'>
-        {post.description || post.posts.description}
+        {post.description}
       </div>
       <div className='mt-auto text-gray-700 text-xs flex items-center justify-between'>
-        <span> {post.user || post.posts.user}</span>
+        <span> {post.user}</span>
         <span> {(post.date || post.posts.date).substring(0,10)}</span>
       </div>
       <div className='absolute -top-3 -right-3 flex items-center space-x-2'>

@@ -27,7 +27,6 @@ export const getPostAction = (search) => async (dispatch) => {
 
 export const getAllPostAction = () => async (dispatch) => {
         try {
-            console.log('geAllPost')
             const { data } = await axios.get('http://localhost:5000/getAllPosts');
             dispatch({ type: 'getAllPosts', payload: data });
         } catch (error) {
@@ -52,11 +51,12 @@ export const deletePostAction = (id) => async (dispatch) => {
 
 export const updatePostAction = (id,post) => async (dispatch) => {
         try {
-            console.log('updated post:', post);
+            
             const { data } = await axios.put(`http://localhost:5000/posts/${id}`, post);
+            console.log('updated post:', data);
             dispatch({ type: 'update', payload: data });
         } catch (error) {
-            toast.warning(error.response.data.msg, {
+            toast.warning(error.response, {
                 position: 'top-right',
             });
         }

@@ -8,7 +8,7 @@ router.post('/createPost',createPost);
 
 router.post('/getPost', getPost)
 router.get('/getAllPosts', getAllPosts);
-router.patch('/posts/:id', updatePost);
+router.put('/posts/:id', updatePost);
 router.delete('/delete/:id', deletePost);
 
 export default router
