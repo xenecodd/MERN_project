@@ -16,19 +16,13 @@ export const createPost = async(req, res)=> {
 }
 
 export const getPost = async (req, res) => {
-    try {   
+    try {
         const { user, title } = req.body;
-        // Find documents that contain the given value in either user or title field
-        let posts = await ModalModel.find({
-            $or: [
-                { user},
-                { title}
-            ]
-        }).lean();
-
-        if (!posts || posts.length === 0) {
-            return res.status(404).json({ msg: "No post found" });
-        }
+        const allPosts = await ModalModel.find({});
+        const posts = allPosts.filter((item) => {
+            if (item.title.toLowerCase()
+                .includes(title.toLowerCase())) { return item; }
+        })
 
         console.log(posts);
 

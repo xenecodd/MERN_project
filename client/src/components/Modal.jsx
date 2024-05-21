@@ -16,7 +16,7 @@ const Modal = () => {
         const {modal} = useSelector((state)=>(state.modal))
         
         const createPostFunc = () => {
-                if (modal.updateId) {
+                if (modal?.updateId) {
                         console.log(modal.updateId)
                         dispatch(updatePostAction(modal.updateId, postData))
                         

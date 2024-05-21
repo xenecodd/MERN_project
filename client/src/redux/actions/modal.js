@@ -13,11 +13,11 @@ export const createPostAction = (postData) => async (dispatch) => {
     }
 };
 
-export const getPostAction = (search) => async (dispatch) => {
+export const getPostAction = (search, bool) => async (dispatch) => {
     try {
-        console.log('aranan post:', search)
         const { data } = await axios.post('http://localhost:5000/getPost', search);
-        dispatch({ type: 'getPost', payload: data });
+        console.log('aranan post:', data);
+        dispatch({ type: 'getPost', payload: { data, bool } });
     } catch (error) {
         toast.warning(error.response.data.msg, {
             position: 'top-right',
