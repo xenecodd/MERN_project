@@ -27,7 +27,7 @@ const register = async (req, res) => {
         const newUser = await AuthSchema.create({ username, email, password: passwordHash });
 
         // Create JWT token
-        const token = jwt.sign({ id: newUser._id }, "SECRET_KEY", { expiresIn: '1h' });
+        const token = jwt.sign({ id: newUser._id }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '0.01h' });
 
         res.status(201).json({
             status: "OK",
@@ -57,7 +57,7 @@ const login = async (req, res) => {
         }
 
         // Create JWT token
-        const token = jwt.sign({ id: user._id }, "SECRET_KEY", { expiresIn: '1h' });
+        const token = jwt.sign({ id: user._id }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '0.01h' });
 
         res.status(201).json({
             status: "OK",

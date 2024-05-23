@@ -5,7 +5,7 @@ export const postReducer = (state = { search: [], posts: [] }, action) => {
                 case 'createPost':
                         return {
 
-                                posts: [...state.posts, action.payload]
+                                posts: [action.payload]
                         }
                 case 'getPost':
                         if (action.payload.bool) {
@@ -25,11 +25,11 @@ export const postReducer = (state = { search: [], posts: [] }, action) => {
                         }
                 case 'delete':
                         return {
-                                posts: [...state.posts.filter((post) => post._id !== action.payload)]
+                                posts: [...state.posts?.posts?.filter((post) => post._id !== action.payload)]
                         }
                 case 'update':
                         return {
-                                posts: [...state.posts.map(post => post._id === action.payload._id ? action.payload : post)]
+                                posts: [...state.posts?.posts?.map(post => post._id === action.payload._id ? action.payload : post)]
                         }
                 default:
                         return state

@@ -20,7 +20,6 @@ const Auth = () => {
     });
   };
   const login = useSelector(state => state.auth);
-  localStorage.setItem('TEST',login)
   useEffect(()=>{
     setIsLogin(login);
     console.log(login)
