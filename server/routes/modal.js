@@ -7,16 +7,15 @@ const router = express.Router();
 
 function authenticateToken(req, res, next) {
         const authHeader = req.headers['authorization'];
-        const token = authHeader && authHeader.split(' ')[1];
-        console.log(authHeader);
-
+        console.log('authenticateToken req.headers(Authorization)', req.headers['authorization'])
+        const token = authHeader.split(' ')[1];
         if (token == null) {
                 return res.status(401).json({ msg: 'No token exists' });
         }
 
         jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
                 if (err) {
-                        return res.status(500).json({ msg: err.message });
+                        return res.status(401).json({ msg: err.message });
                 }
                 req.user = user;
                 next();

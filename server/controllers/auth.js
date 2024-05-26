@@ -2,6 +2,16 @@ import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import AuthSchema from '../modules/auth.js';
 
+
+const refresh = async(req, res) => {
+    const token = jwt.sign({ id: req.user.id }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '1h' });
+    console.log('refresh controller userid',token)
+    res.status(201).json({
+        status: "OK",
+        token
+    });
+}
+
 const register = async (req, res) => {
     try {
         const { username, email, password } = req.body;
@@ -28,11 +38,13 @@ const register = async (req, res) => {
 
         // Create JWT token
         const token = jwt.sign({ id: newUser._id }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '0.01h' });
+        const refreshToken = jwt.sign({ id: newUser._id }, "qeOUJz6FgEtJMKmDW6Mw3TiiFBBBQs2oDG8N8HKGCeJqKt2kynPx0RkcfS", { expiresIn: '1h' });
 
         res.status(201).json({
             status: "OK",
             newUser,
-            token
+            token,
+            refreshToken
         });
 
     } catch (error) {
@@ -58,11 +70,13 @@ const login = async (req, res) => {
 
         // Create JWT token
         const token = jwt.sign({ id: user._id }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '0.01h' });
+        const refreshToken = jwt.sign({ id: user._id }, "qeOUJz6FgEtJMKmDW6Mw3TiiFBBBQs2oDG8N8HKGCeJqKt2kynPx0RkcfS", { expiresIn: '1h' });
 
         res.status(201).json({
             status: "OK",
             user,
-            token
+            token,
+            refreshToken
         });
 
     } catch (error) {
@@ -75,4 +89,4 @@ function isEmail(email) {
     return regex.test(email);
 }
 
-export { register, login };
+export { register, login, refresh };

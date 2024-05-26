@@ -17,7 +17,7 @@ function App() {
   return (
     <div>
       <BrowserRouter>
-        <Navbar />}
+        <Navbar />
         { modal.modal && <Modal />}
         <Routes>
           <Route path="/" element={<Home />} />
