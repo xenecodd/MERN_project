@@ -28,9 +28,6 @@ const refreshTokenFn = async () => {
         }
       }
     );
-
-    console.log('response', response.data);
-    localStorage.removeItem('auth')
     return response.data;
   } catch (error) {
     console.log('error', error);

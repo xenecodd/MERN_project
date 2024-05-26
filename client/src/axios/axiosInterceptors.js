@@ -21,14 +21,13 @@ axios.interceptors.response.use(
   (response) => response,
   async (error) => {
     const config = error?.config;
-
+    
     if (error?.response?.status === 401 && !config?.sent) {
       config.sent = true;
       console.log('memoized')
       const result = await memoizedRefreshToken();
       console.log('memoized over',result)
-      localStorage.setItem('auth',result)
-
+      localStorage.setItem('auth',JSON.stringify(result))
       return axios(config);
     }
     return Promise.reject(error);
